@@ -1,0 +1,28 @@
+{
+  "name": "voys-stats",
+  "version": "0.0.1",
+  "description": "A simple app that logs certain Voys statistics via webhooks.",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbjansen/voys-stats.git"
+  },
+  "author": "bbjansen <bobjansen@pm.me>",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/bbjansen/voys-stats/issues"
+  },
+  "homepage": "https://github.com/bbjansen/voys-stats#readme",
+  "dependencies": {
+    "console-stamp": "^0.2.9",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "knex": "^0.21.5",
+    "morgan": "~1.9.1",
+    "sqlite3": "^5.0.0"
+  }
+}
