@@ -9,18 +9,9 @@ const router = express.Router();
 const DB = require("../libs/db");
 const db = new DB();
 
-/* GET menu stats */
-router.get("/menu/", async function (req, res, next) {
-  const menu = await db.getMenu();
-
-  res.status(200).json(menu);
-});
-
-/* UPDATE menu stats */
-router.get("/menu/update/:code", async function (req, res, next) {
-  const menu = await db.updateMenu(req.params.code);
-
-  res.status(200).json(menu);
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Voys Stats Logger' });
 });
 
 module.exports = router;

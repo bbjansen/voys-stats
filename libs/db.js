@@ -39,7 +39,6 @@ class DB {
       console.info("[db] ready");
       return;
     } catch (err) {
-      console.log(err)
       if (err.code !== "SQLITE_CONSTRAINT") {
         console.error("[db] " + err.message);
       }
@@ -49,7 +48,31 @@ class DB {
   // Get Menu Count
   async getMenu() {
     try {
-      return await db("menu").select();
+      const data = await db("menu").select();
+
+      let dataset = []
+
+      for (const point of data) {
+
+        dataset.push({
+          date: point.date,
+          data: {
+            0: point[0],
+            1: point[1],
+            2: point[2],
+            3: point[3],
+            4: point[4],
+            5: point[5],
+            6: point[6],
+            7: point[7],
+            8: point[8],
+            9: point[9]
+          }
+        })
+      }
+
+      return dataset
+
     } catch (err) {
       console.error("[db] " + err.message);
     }
@@ -81,7 +104,7 @@ class DB {
           9: 0
         });
 
-      }else {
+      } else {
         await db("menu").increment(code, 1).where("date", date);
       }
 
