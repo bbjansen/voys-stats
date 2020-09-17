@@ -13,4 +13,5 @@ Create `.env` file in the root directory:
 
 ```
 DB_FILE=./db.sqlite3
+PORT=3000
 ```
