@@ -11,7 +11,8 @@ const db = new DB();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("dashboard", { title: "Voys Stats Logger" });
+    res.render("dashboard", { title: "Voys Stats Logger" });
+  
 });
 
 module.exports = router;

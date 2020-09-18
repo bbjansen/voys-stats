@@ -1,6 +1,6 @@
 const ctx = document.getElementById("chart").getContext("2d");
 
-fetch("./api/menu/")
+fetch("/api/menu/")
   .then((response) => response.json())
   .then(function (data) {
     const chart = new Chart(ctx, {
