@@ -13,59 +13,59 @@ fetch("/api/menu/")
         datasets: [
           {
             label: "Again",
-            backgroundColor: "rgb(123, 7, 230)",
-            borderColor: "rgb(123, 7, 230)",
+            backgroundColor: "rgba(123, 7, 230, .2)",
+            borderColor: "rgba(123, 7, 230, 1)",
             data: data.map((d) => d.data[0]),
           },
           {
             label: "English",
-            backgroundColor: "rgb(24, 99, 67)",
-            borderColor: "rgb(24, 99, 67)",
+            backgroundColor: "rgba(24, 99, 67, .2)",
+            borderColor: "rgba(24, 99, 67, 1)",
             data: data.map((d) => d.data[1]),
           },
           {
             label: "Sales",
-            backgroundColor: "rgb(67, 2, 222)",
-            borderColor: "rgb(67, 2, 222)",
+            backgroundColor: "rgba(67, 2, 222, .2)",
+            borderColor: "rgba(67, 2, 222, 1)",
             data: data.map((d) => d.data[2]),
           },
           {
             label: "Support",
-            backgroundColor: "rgb(167, 200, 2)",
-            borderColor: "rgb(167, 200, 2)",
+            backgroundColor: "rgba(167, 200, 2, .2)",
+            borderColor: "rgba(167, 200, 2, 1)",
             data: data.map((d) => d.data[3]),
           },
           {
             label: "Other",
-            backgroundColor: "rgb(290, 5, 132)",
-            borderColor: "rgb(290, 5, 132)",
+            backgroundColor: "rgba(290, 5, 132, .2)",
+            borderColor: "rgba(290, 5, 132, 1)",
             data: data.map((d) => d.data[4]),
           },
           /** {
                 label: '',
-                backgroundColor: 'rgb(4, 2, 55)',
-                borderColor: 'rgb(4, 2, 55)',
+                backgroundColor: 'rgba(4, 2, 55)',
+                borderColor: 'rgba(4, 2, 55)',
                 data: data.map((d) => d.data[5])
             },{
                 label: '6',
-                backgroundColor: 'rgb(80, 99, 132)',
-                borderColor: 'rgb(80, 99, 132)',
+                backgroundColor: 'rgba(80, 99, 132)',
+                borderColor: 'rgba(80, 99, 132)',
                 data: data.map((d) => d.data[6])
             },{
                 label: '7',
-                backgroundColor: 'rgb(12, 145, 55)',
-                borderColor: 'rgb(12, 145, 55)',
+                backgroundColor: 'rgba(12, 145, 55)',
+                borderColor: 'rgba(12, 145, 55)',
                 data: data.map((d) => d.data[7])
             },{
                 label: '8',
-                backgroundColor: 'rgb(295, 99, 80)',
-                borderColor: 'rgb(295, 99, 80)',
+                backgroundColor: 'rgba(295, 99, 80)',
+                borderColor: 'rgba(295, 99, 80)',
                 data: data.map((d) => d.data[8])
             }
             ,{
                 label: '9',
-                backgroundColor: 'rgb(255, 160, 132)',
-                borderColor: 'rgb(255, 160, 132)',
+                backgroundColor: 'rgba(255, 160, 132)',
+                borderColor: 'rgba(255, 160, 132)',
                 data: data.map((d) => d.data[9])
             }
             **/
@@ -108,6 +108,7 @@ fetch("/api/menu/")
             {
               id: "y-axis",
               type: "linear",
+              stacked: true,
               ticks: {
                 display: true,
                 beginAtZero: false,
@@ -133,7 +134,7 @@ fetch("/api/menu/")
           intersect: false,
           displayColors: true,
           cornerRadius: 6,
-          backgroundColor: "rgba(0, 0, 0, 0.4)",
+          backgroundColor: "rgbaa(0, 0, 0, 0.4)",
           mode: "label",
           callbacks: {},
         },
