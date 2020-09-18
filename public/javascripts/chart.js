@@ -1,42 +1,47 @@
+const ctx = document.getElementById("chart").getContext("2d");
 
-const ctx = document.getElementById('chart').getContext('2d');
-
-fetch('./menu/').then(response => response.json()) .then(function(data) {
-
+fetch("./api/menu/")
+  .then((response) => response.json())
+  .then(function (data) {
     const chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
+      // The type of chart we want to create
+      type: "line",
 
-        // The data for our dataset
-        data: {
-            labels: data.map((d) => d.date),
-            datasets: [{
-                label: 'Again',
-                backgroundColor: 'rgb(123, 7, 230)',
-                borderColor: 'rgb(123, 7, 230)',
-                data: data.map((d) => d.data[0])
-            },{
-                label: 'English',
-                backgroundColor: 'rgb(24, 99, 67)',
-                borderColor: 'rgb(24, 99, 67)',
-                data: data.map((d) => d.data[1])
-            },{
-                label: 'Sales',
-                backgroundColor: 'rgb(67, 2, 222)',
-                borderColor: 'rgb(67, 2, 222)',
-                data: data.map((d) => d.data[2])
-            },{
-                label: 'Support',
-                backgroundColor: 'rgb(167, 200, 2)',
-                borderColor: 'rgb(167, 200, 2)',
-                data: data.map((d) => d.data[3])
-            },{
-                label: 'Other',
-                backgroundColor: 'rgb(290, 5, 132)',
-                borderColor: 'rgb(290, 5, 132)',
-                data: data.map((d) => d.data[4])
-            },
-            /** {
+      // The data for our dataset
+      data: {
+        labels: data.map((d) => d.date),
+        datasets: [
+          {
+            label: "Again",
+            backgroundColor: "rgb(123, 7, 230)",
+            borderColor: "rgb(123, 7, 230)",
+            data: data.map((d) => d.data[0]),
+          },
+          {
+            label: "English",
+            backgroundColor: "rgb(24, 99, 67)",
+            borderColor: "rgb(24, 99, 67)",
+            data: data.map((d) => d.data[1]),
+          },
+          {
+            label: "Sales",
+            backgroundColor: "rgb(67, 2, 222)",
+            borderColor: "rgb(67, 2, 222)",
+            data: data.map((d) => d.data[2]),
+          },
+          {
+            label: "Support",
+            backgroundColor: "rgb(167, 200, 2)",
+            borderColor: "rgb(167, 200, 2)",
+            data: data.map((d) => d.data[3]),
+          },
+          {
+            label: "Other",
+            backgroundColor: "rgb(290, 5, 132)",
+            borderColor: "rgb(290, 5, 132)",
+            data: data.map((d) => d.data[4]),
+          },
+          /** {
                 label: '',
                 backgroundColor: 'rgb(4, 2, 55)',
                 borderColor: 'rgb(4, 2, 55)',
@@ -64,82 +69,81 @@ fetch('./menu/').then(response => response.json()) .then(function(data) {
                 data: data.map((d) => d.data[9])
             }
             **/
-        ]
+        ],
+      },
+
+      // Configuration options go here
+      options: {
+        maintainAspectRatio: true,
+        responsive: true,
+        ticks: {
+          source: "auto",
         },
-
-        // Configuration options go here
-        options: {
-            maintainAspectRatio: true,
-            responsive: true,
-            ticks: {
-              source: 'auto'
+        scales: {
+          xAxes: [
+            {
+              id: "x-axis",
+              ticks: {
+                autoSkip: true,
+                maxRotation: 45,
+                offset: true,
+              },
+              time: {
+                unit: "day",
+              },
+              callback() {
+                return value;
+              },
+              distribution: "linear",
+              gridLines: {
+                display: true,
+              },
+              scaleLabel: {
+                fontColor: "#75828F",
+                fontSize: 10,
+              },
             },
-            scales: {
-              xAxes: [{
-                id: 'x-axis',
-                ticks: {
-                  autoSkip: true,
-                  maxRotation: 45,
-                  offset: true
+          ],
+          yAxes: [
+            {
+              id: "y-axis",
+              type: "linear",
+              ticks: {
+                display: true,
+                beginAtZero: false,
+                callback(value) {
+                  return value;
                 },
-                time: {
-                  unit: 'day'
-                },
-                callback() {
-                  return value
-                },
-                distribution: 'linear',
-                gridLines: {
-                  display: true
-                },
-                scaleLabel: {
-                  fontColor: '#75828F',
-                  fontSize: 10
-                }
-              }],
-              yAxes: [{
-                id: 'y-axis',
-                type: 'linear',
-                ticks: {
-                  display: true,
-                  beginAtZero: false,
-                  callback(value) {
-                    return value
-                  }
-                },
-                gridLines: {
-                  display: true,
-                  drawBorder: true
-                }
-              }]
+              },
+              gridLines: {
+                display: true,
+                drawBorder: true,
+              },
             },
-            tooltips: {
-              bodyFontColor: '#fff',
-              bodySpacing: 8,
-              bodyFontSize: 13,
-              bodyFontStyle: 'normal',
-              bodyMarginBottom: 0,
-              xPadding: 15,
-              yPadding: 15,
-              intersect: false,
-              displayColors: true,
-              cornerRadius: 6,
-              backgroundColor: 'rgba(0, 0, 0, 0.4)',
-              mode: 'label',
-              callbacks: {
-              }
-            },
-            legend: {
-              display: true
-            },
-            animation: {
-              duration: 1000,
-              easing: 'easeOutQuint'
-            }
-        }
+          ],
+        },
+        tooltips: {
+          bodyFontColor: "#fff",
+          bodySpacing: 8,
+          bodyFontSize: 13,
+          bodyFontStyle: "normal",
+          bodyMarginBottom: 0,
+          xPadding: 15,
+          yPadding: 15,
+          intersect: false,
+          displayColors: true,
+          cornerRadius: 6,
+          backgroundColor: "rgba(0, 0, 0, 0.4)",
+          mode: "label",
+          callbacks: {},
+        },
+        legend: {
+          display: true,
+        },
+        animation: {
+          duration: 1000,
+          easing: "easeOutQuint",
+        },
+      },
     });
-
-
-})
-
-
+  });

@@ -4,7 +4,7 @@
 "use strict";
 
 const express = require("express");
-const path = require('path');
+const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const app = express();
@@ -13,20 +13,19 @@ const app = express();
 const DB = require("./libs/db");
 const db = new DB();
 
-
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "jade");
 
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
 // routes
-app.use("/", require("./routes/index"));
-app.use("/menu", require("./routes/menu"));
+app.use("/dashboard", require("./routes/dashboard"));
+app.use("/api", require("./routes/api"));
 
 // bootstrap db
 init();
